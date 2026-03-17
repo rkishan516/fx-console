@@ -1,0 +1,403 @@
+{
+  "name": "fx-console",
+  "displayName": "Fx Console",
+  "description": "VS Code extension for fx — the Dart/Flutter monorepo manager",
+  "version": "0.1.0",
+  "publisher": "fx",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["fx", "dart", "flutter", "monorepo"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fx-community/fx-console"
+  },
+  "license": "MIT",
+  "activationEvents": [
+    "workspaceContains:fx.yaml",
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "fx-console",
+          "title": "Fx Console",
+          "icon": "resources/fx-console-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "fx-console": [
+        {
+          "id": "fxConsole.welcome",
+          "name": "Get Started",
+          "when": "!fxConsole.workspaceFound"
+        },
+        {
+          "id": "fxConsole.workspaceExplorer",
+          "name": "Projects",
+          "when": "fxConsole.workspaceFound"
+        },
+        {
+          "id": "fxConsole.taskStatus",
+          "name": "Task History",
+          "when": "fxConsole.workspaceFound"
+        },
+        {
+          "id": "fxConsole.commonCommands",
+          "name": "Common Commands",
+          "when": "fxConsole.workspaceFound"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "fxConsole.welcome",
+        "contents": "No fx workspace detected in this folder.\n\nFx is a Dart/Flutter monorepo manager. To get started:\n1. Install fx: `dart pub global activate fx`\n2. Initialize a workspace: `fx init`\n\n[Learn More](https://pub.dev/packages/fx)\n[Open Folder](command:vscode.openFolder)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "fx-console.refreshExplorer",
+        "title": "Refresh",
+        "category": "Fx",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "fx-console.runTarget",
+        "title": "Run Target",
+        "category": "Fx",
+        "icon": "$(play)"
+      },
+      {
+        "command": "fx-console.runVerbose",
+        "title": "Run Verbose",
+        "category": "Fx",
+        "icon": "$(debug-alt)"
+      },
+      {
+        "command": "fx-console.runMany",
+        "title": "Run Many",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.runAffected",
+        "title": "Run Affected",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.generate",
+        "title": "Generate",
+        "category": "Fx",
+        "icon": "$(add)"
+      },
+      {
+        "command": "fx-console.showGraph",
+        "title": "Show Graph",
+        "category": "Fx",
+        "icon": "$(type-hierarchy)"
+      },
+      {
+        "command": "fx-console.clearHistory",
+        "title": "Clear History",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.rerunTask",
+        "title": "Re-run",
+        "category": "Fx",
+        "icon": "$(debug-restart)"
+      },
+      {
+        "command": "fx-console.copyTaskCommand",
+        "title": "Copy Run Command",
+        "category": "Fx",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "fx-console.revealInExplorer",
+        "title": "Reveal in Explorer",
+        "category": "Fx",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "fx-console.runSkipCache",
+        "title": "Run (skip cache)",
+        "category": "Fx",
+        "icon": "$(debug-step-over)"
+      },
+      {
+        "command": "fx-console.runTargetFromExplorer",
+        "title": "Fx: Run Target",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.generateFromExplorer",
+        "title": "Fx: Generate",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.focusInGraphFromExplorer",
+        "title": "Fx: Focus in Graph",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.focusInGraph",
+        "title": "Focus in Graph",
+        "category": "Fx",
+        "icon": "$(type-hierarchy)"
+      },
+      {
+        "command": "fx-console.editCommonCommands",
+        "title": "Edit Common Commands",
+        "category": "Fx",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "fx-console.runTerminalCommand",
+        "title": "Run Terminal Command",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.runWithOptions",
+        "title": "Run With Options...",
+        "category": "Fx",
+        "icon": "$(settings)"
+      },
+      {
+        "command": "fx-console.moveProject",
+        "title": "Move Project",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.removeProject",
+        "title": "Remove Project",
+        "category": "Fx"
+      },
+      {
+        "command": "fx-console.showProjectDetails",
+        "title": "Project Details",
+        "category": "Fx",
+        "icon": "$(info)"
+      },
+      {
+        "command": "fx-console.showAffected",
+        "title": "Show Affected Projects",
+        "category": "Fx",
+        "icon": "$(git-branch)"
+      },
+      {
+        "command": "fx-console.showMigrations",
+        "title": "Show Migrations",
+        "category": "Fx",
+        "icon": "$(arrow-up)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "fx-console.refreshExplorer",
+          "when": "view == fxConsole.workspaceExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "fx-console.showGraph",
+          "when": "view == fxConsole.workspaceExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "fx-console.generate",
+          "when": "view == fxConsole.workspaceExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "fx-console.showAffected",
+          "when": "view == fxConsole.workspaceExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "fx-console.editCommonCommands",
+          "when": "view == fxConsole.commonCommands",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "fx-console.runTargetFromExplorer",
+          "when": "resourceFilename == pubspec.yaml && fxConsole.workspaceFound",
+          "group": "fx@1"
+        },
+        {
+          "command": "fx-console.generateFromExplorer",
+          "when": "resourceFilename == pubspec.yaml && fxConsole.workspaceFound",
+          "group": "fx@2"
+        },
+        {
+          "command": "fx-console.focusInGraphFromExplorer",
+          "when": "resourceFilename == pubspec.yaml && fxConsole.workspaceFound",
+          "group": "fx@3"
+        },
+        {
+          "command": "fx-console.runTargetFromExplorer",
+          "when": "explorerResourceIsFolder && fxConsole.workspaceFound",
+          "group": "fx@1"
+        },
+        {
+          "command": "fx-console.generateFromExplorer",
+          "when": "explorerResourceIsFolder && fxConsole.workspaceFound",
+          "group": "fx@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "fx-console.runTarget",
+          "when": "viewItem == fxTarget",
+          "group": "inline"
+        },
+        {
+          "command": "fx-console.runVerbose",
+          "when": "viewItem == fxTarget",
+          "group": "inline"
+        },
+        {
+          "command": "fx-console.runSkipCache",
+          "when": "viewItem == fxTarget",
+          "group": "inline"
+        },
+        {
+          "command": "fx-console.runWithOptions",
+          "when": "viewItem == fxTarget",
+          "group": "context@0"
+        },
+        {
+          "command": "fx-console.copyTaskCommand",
+          "when": "viewItem == fxTarget",
+          "group": "context@1"
+        },
+        {
+          "command": "fx-console.showProjectDetails",
+          "when": "viewItem == fxProject",
+          "group": "inline"
+        },
+        {
+          "command": "fx-console.focusInGraph",
+          "when": "viewItem == fxProject",
+          "group": "context@0"
+        },
+        {
+          "command": "fx-console.revealInExplorer",
+          "when": "viewItem == fxProject",
+          "group": "context@1"
+        },
+        {
+          "command": "fx-console.moveProject",
+          "when": "viewItem == fxProject",
+          "group": "context@2"
+        },
+        {
+          "command": "fx-console.removeProject",
+          "when": "viewItem == fxProject",
+          "group": "context@3"
+        },
+        {
+          "command": "fx-console.rerunTask",
+          "when": "viewItem == fxHistoryItem",
+          "group": "inline"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "fx-console.runTarget",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r"
+      },
+      {
+        "command": "fx-console.showGraph",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g"
+      },
+      {
+        "command": "fx-console.generate",
+        "key": "ctrl+shift+n",
+        "mac": "cmd+shift+n"
+      }
+    ],
+    "configuration": {
+      "title": "Fx Console",
+      "properties": {
+        "fx-console.fxBinaryPath": {
+          "type": "string",
+          "default": "fx",
+          "description": "Path to the fx binary (default: fx, assumes it is on PATH)"
+        },
+        "fx-console.defaultConcurrency": {
+          "type": "number",
+          "default": 4,
+          "description": "Default number of parallel tasks to run"
+        },
+        "fx-console.autoRefresh": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-refresh the project tree when workspace files change"
+        },
+        "fx-console.showCodeLens": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show inline Run/Run Verbose buttons in pubspec.yaml files"
+        },
+        "fx-console.commonCommands": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["run", "run-many", "affected", "generate", "graph", "lint"],
+          "description": "Commands shown in the Common Commands panel. Each entry maps to an fx command or VS Code action."
+        },
+        "fx-console.generatorAllowlist": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Glob patterns to include in the generator dropdown. Empty means all generators are shown."
+        },
+        "fx-console.generatorBlocklist": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Glob patterns to exclude from the generator dropdown."
+        },
+        "fx-console.projectViewingStyle": {
+          "type": "string",
+          "default": "automatic",
+          "enum": ["automatic", "list", "tree"],
+          "enumDescriptions": [
+            "Group projects by folder when there are multiple source folders",
+            "Show all projects as a flat list",
+            "Always group projects by folder"
+          ],
+          "description": "How projects are displayed in the Projects panel"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.build.json --noEmit && node esbuild.config.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "test": "mocha --require ts-node/register --spec 'src/test/**/*.test.ts' --timeout 10000 --ui tdd",
+    "package": "npx @vscode/vsce package --allow-missing-repository",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.1",
+    "mocha": "^10.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "yaml": "^2.4.1"
+  }
+}

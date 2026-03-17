@@ -1,0 +1,127 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--vscode-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  background: var(--vscode-editor-background);
+  color: var(--vscode-foreground);
+  padding: 20px;
+  line-height: 1.5;
+}
+
+#loading {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.7;
+}
+
+header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--vscode-widget-border, var(--vscode-panel-border));
+  padding-bottom: 16px;
+}
+
+header h1 {
+  font-size: 1.4em;
+  margin-bottom: 8px;
+  color: var(--vscode-textLink-foreground, var(--vscode-foreground));
+}
+
+.meta {
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin: 4px 0;
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.tag {
+  background: var(--vscode-badge-background);
+  color: var(--vscode-badge-foreground);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8em;
+}
+
+section {
+  margin-bottom: 24px;
+}
+
+section h2 {
+  font-size: 1.1em;
+  margin-bottom: 12px;
+  color: var(--vscode-foreground);
+}
+
+.target-card {
+  background: var(--vscode-sideBar-background, var(--vscode-editor-background));
+  border: 1px solid var(--vscode-widget-border, var(--vscode-panel-border));
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.target-card .target-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.target-card .target-name {
+  font-weight: bold;
+}
+
+.target-card .target-executor {
+  font-size: 0.85em;
+  opacity: 0.7;
+  font-family: var(--vscode-editor-font-family, monospace);
+}
+
+.target-card .target-detail {
+  font-size: 0.85em;
+  opacity: 0.8;
+  margin: 2px 0;
+}
+
+.run-btn {
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+.run-btn:hover {
+  background: var(--vscode-button-hoverBackground);
+}
+
+.dep-list {
+  list-style: none;
+  padding: 0;
+}
+
+.dep-list li {
+  padding: 4px 0;
+}
+
+.dep-link {
+  color: var(--vscode-textLink-foreground);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.dep-link:hover {
+  text-decoration: underline;
+}
+
+.empty {
+  opacity: 0.5;
+  font-style: italic;
+}

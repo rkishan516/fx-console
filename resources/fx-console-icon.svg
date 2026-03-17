@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Simplified "fx" monogram for activity bar -->
+  <rect width="16" height="16" rx="3" fill="#58a6ff" opacity="0.15"/>
+  <!-- f -->
+  <path d="M3 4 H7 M3 8 H6 M3 4 V13" stroke="#58a6ff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- x -->
+  <path d="M9 8 L13 13 M13 8 L9 13" stroke="#a371f7" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>
