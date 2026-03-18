@@ -1,6 +1,6 @@
 # Fx Console — VS Code Extension
 
-VS Code extension for [fx](../../README.md) — the Dart/Flutter monorepo manager. Brings the [Nx Console](https://nx.dev/getting-started/editor-setup) experience to fx workspaces.
+VS Code extension for [fx](https://github.com/rkishan516/fx.git) — the Dart/Flutter monorepo manager. Brings the [Nx Console](https://nx.dev/getting-started/editor-setup) experience to fx workspaces.
 
 ## Requirements
 

@@ -56,7 +56,7 @@
     "viewsWelcome": [
       {
         "view": "fxConsole.welcome",
-        "contents": "No fx workspace detected in this folder.\n\nFx is a Dart/Flutter monorepo manager. To get started:\n1. Install fx: `dart pub global activate fx`\n2. Initialize a workspace: `fx init`\n\n[Learn More](https://pub.dev/packages/fx)\n[Open Folder](command:vscode.openFolder)"
+        "contents": "No fx workspace detected in this folder.\n\nFx is a Dart/Flutter monorepo manager. To get started:\n1. Install fx: `dart pub global activate fx`\n2. Initialize a workspace: `fx init`\n\n[Learn More](https://github.com/rkishan516/fx.git)\n[Open Folder](command:vscode.openFolder)"
       }
     ],
     "commands": [
